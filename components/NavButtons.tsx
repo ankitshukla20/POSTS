@@ -19,8 +19,8 @@ export default function NavButtons() {
           <li>
             <Link href={`${username}`}>
               <Avatar>
-                <AvatarImage src="#" />
-                <AvatarFallback>P</AvatarFallback>
+                <AvatarImage src={`${user?.photoURL}`} />
+                <AvatarFallback>{user?.displayName?.charAt(0)}</AvatarFallback>
               </Avatar>
             </Link>
           </li>

@@ -1,9 +1,10 @@
 "use client";
 import { User } from "firebase/auth";
 import { ReactNode, createContext, useContext } from "react";
+import { useUserData } from "./hooks";
 
 interface UserContextType {
-  user: User | {} | null;
+  user: User | null | undefined;
   username: string | null;
 }
 
@@ -17,8 +18,10 @@ const UserContext = createContext<UserContextType>({
 });
 
 export default function UserProvider({ children }: Props) {
+  const { user, username } = useUserData();
+
   return (
-    <UserContext.Provider value={{ user: {}, username: "Yashi" }}>
+    <UserContext.Provider value={{ user, username }}>
       {children}
     </UserContext.Provider>
   );
