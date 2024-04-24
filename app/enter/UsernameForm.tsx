@@ -8,7 +8,6 @@ import debounce from "lodash.debounce";
 import {
   ChangeEvent,
   FormEvent,
-  FormEventHandler,
   useCallback,
   useEffect,
   useState,
@@ -25,7 +24,7 @@ export default function UsernameForm() {
     const val = e.target.value.toLowerCase();
     const re = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
 
-    if (val.length < 3) {
+    if (val.length <= 3) {
       setFormVal(val);
       setIsLoading(false);
       setIsValid(false);
@@ -46,7 +45,7 @@ export default function UsernameForm() {
   // debouncing the function which is checking if username is available and valid or not
   const checkUsername = useCallback(
     debounce(async (formVal) => {
-      if (formVal.length >= 3) {
+      if (formVal.length > 3) {
         const docRef = doc(firestore, `usernames/${formVal}`);
         const docSnap = await getDoc(docRef);
 

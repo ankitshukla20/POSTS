@@ -1,6 +1,14 @@
 import { getApps, initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
-import { getFirestore } from "firebase/firestore";
+import {
+  DocumentData,
+  collection,
+  getDocs,
+  getFirestore,
+  limit,
+  query,
+  where,
+} from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
@@ -21,3 +29,23 @@ export const firestore = getFirestore(firebaseApp);
 export const storage = getStorage(firebaseApp);
 
 export const googleAuthProvider = new GoogleAuthProvider();
+
+export async function getUserWithUsername(username: string) {
+  const usersRef = collection(firestore, "users");
+  const q = query(usersRef, where("username", "==", username), limit(1));
+
+  const querySnap = await getDocs(q);
+
+  const userDoc = querySnap.docs[0];
+  return userDoc;
+}
+
+export function parseToJSON(doc: DocumentData) {
+  const data = doc.data();
+
+  return {
+    ...data,
+    createdAt: data.createdAt?.toMillis(),
+    updatedAt: data.updatedAt?.toMillis(),
+  };
+}

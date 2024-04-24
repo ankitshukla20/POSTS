@@ -23,11 +23,11 @@ export default function NavButtons() {
           </li>
           <li>
             <Link href="/admin">
-              <Button>Write Posts</Button>
+              <Button>Write Post</Button>
             </Link>
           </li>
           <li>
-            <Link href={`${username}`}>
+            <Link href={`/${username}`}>
               <Avatar>
                 <AvatarImage src={`${user?.photoURL}`} />
                 <AvatarFallback>{user?.displayName?.charAt(0)}</AvatarFallback>

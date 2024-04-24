@@ -1,9 +1,11 @@
-import AuthCheck from "@/components/AuthCheck";
+import PostList from "../../components/PostList";
+import CreateNewPost from "./CreateNewPost";
 
 export default function AdminPostsPage() {
   return (
     <>
-      <h1>Admin Posts Page</h1>
+      <PostList />
+      <CreateNewPost />
     </>
   );
 }
