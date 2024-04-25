@@ -19,13 +19,15 @@ export default function NavButtons() {
       {username && (
         <div className="flex gap-6 items-center">
           <li>
-            <Button variant="secondary" onClick={signOut}>
+            <Button variant="outline" onClick={signOut}>
               Sign out
             </Button>
           </li>
           <li>
             <Link href="/admin">
-              <Button>Write Post</Button>
+              <Button className="hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 bg-gradient-to-r from-blue-500 to-pink-500 text-white">
+                Write Post
+              </Button>
             </Link>
           </li>
           <li>

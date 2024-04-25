@@ -22,7 +22,7 @@ export default function PostItem({ post, admin = false }: Props) {
       <CardHeader>
         <CardTitle className="text-xl">{post.title}</CardTitle>
         <CardDescription>
-          By <em className="text-pink-600">@{post.username}</em>
+          By <em className="text-pink-600 font-medium">@{post.username}</em>
         </CardDescription>
       </CardHeader>
       <CardFooter className="flex flex-col items-start gap-1 sm:flex-row sm:items-center">
