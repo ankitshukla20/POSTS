@@ -42,26 +42,30 @@ export default function CreateNewPost() {
   };
 
   return (
-    <>
-      <h1 className="text-2xl font-semibold my-3">Create New Post</h1>
-      <form onSubmit={createPost}>
-        <Input
-          className="text-xl p-6"
+    <div className="px-4 pt-4 pb-6 rounded-2xl border bg-slate-100 dark:bg-slate-900">
+      <h1 className="text-2xl font-semibold pl-1 mb-3">Create New Post</h1>
+      <p className="p-1 mb-2 font-mono">
+        <strong>slug: </strong>
+        {slug}
+      </p>
+      <form
+        onSubmit={createPost}
+        className="flex flex-col md:flex-row md:items-center gap-5"
+      >
+        <input
+          className="text-lg w-full bg-zinc-200 text-zinc-600 ring-1 ring-zinc-400 focus:ring-2 focus:ring-rose-400 outline-none duration-300 placeholder:text-zinc-600 placeholder:opacity-50 rounded-2xl px-4 py-3 shadow-md focus:shadow-lg focus:shadow-rose-400"
           placeholder="Post Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <p className="my-2">
-          <strong>Slug:</strong> {slug}
-        </p>
         <Button
           type="submit"
           disabled={!isValid}
-          className="bg-green-600 hover:bg-green-700 text-lg px-5 py-5"
+          className="self-start h-12 inline-block px-6 py-3 font-bold text-center text-white uppercase align-middle transition-all rounded-lg cursor-pointer bg-green-600 leading-pro text-xs ease-soft-in tracking-tight-soft shadow-soft-md hover:scale-110 hover:rotate-2 hover:bg-green-500 hover:shadow-lg active:opacity-85"
         >
           Create
         </Button>
       </form>
-    </>
+    </div>
   );
 }

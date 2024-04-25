@@ -57,8 +57,8 @@ export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
     <>
       <PostFeed posts={posts} />
 
-      <div className="flex justify-center mt-3">
-        <div className="w-11/12 md:w-7/8 lg:w-2/3">
+      <div className="flex justify-center mt-2">
+        <div className="w-11/12">
           {isFetching && (
             <div className="w-full gap-x-2 flex items-center mx-5 my-2.5">
               <div className="w-4 h-4 animate-pulse bg-pink-600 rounded-full "></div>
@@ -68,7 +68,7 @@ export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
           )}
 
           {postsEnd && (
-            <p className="text-slate-500">You have reached the end!</p>
+            <p className="text-slate-500 mx-3">You have reached the end!</p>
           )}
 
           {!isFetching && !postsEnd && (

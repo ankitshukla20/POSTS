@@ -18,19 +18,18 @@ export default function PostItem({ post, admin = false }: Props) {
   const minutesToRead = (wordCount / 100 + 1).toFixed(0);
 
   return (
-    <Card className="w-11/12 md:w-7/8 lg:w-2/3">
-      <CardHeader>
-        <CardTitle className="text-xl">{post.title}</CardTitle>
-        <CardDescription>
-          By <em className="text-pink-600 font-medium">@{post.username}</em>
-        </CardDescription>
-      </CardHeader>
-      <CardFooter className="flex flex-col items-start gap-1 sm:flex-row sm:items-center">
+    <div className="w-11/12 py-5 px-8 rounded-xl border">
+      <h1 className="text-xl font-semibold">{post.title}</h1>
+      <p className="text-sm">
+        By <em className="text-pink-600 font-medium">@{post.username}</em>
+      </p>
+
+      <div className="mt-7 flex flex-col items-start gap-1 sm:flex-row sm:items-center">
         <p className="flex-grow text-slate-400 text-sm">
           {wordCount} words, {minutesToRead} min read
         </p>
-        <p className="text-sm pt-2 sm:p-0">❤️ {post.heartCount} Hearts</p>
-      </CardFooter>
-    </Card>
+        <p className="pt-2 sm:p-0 font-light">❤️ {post.heartCount} Hearts</p>
+      </div>
+    </div>
   );
 }

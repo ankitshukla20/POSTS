@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import UserProvider from "@/lib/userContext";
+import { ThemeProvider } from "@/components/ThemeProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +22,16 @@ export default function RootLayout({
     <UserProvider>
       <html lang="en" className="">
         <body className={inter.className}>
-          <Navbar />
-          <main className="container mx-auto md:w-4/5">{children}</main>
-          <Toaster />
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <Navbar />
+            <main className="container mx-auto md:w-4/5">{children}</main>
+            <Toaster />
+          </ThemeProvider>
         </body>
       </html>
     </UserProvider>

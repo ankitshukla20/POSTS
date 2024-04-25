@@ -4,6 +4,7 @@ import Link from "next/link";
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { Button } from "./ui/button";
 import { auth } from "@/lib/firebase";
+import ThemeSwitch from "./ThemeSwitch";
 
 export default function NavButtons() {
   const { user, username } = useUserContext();
@@ -38,14 +39,18 @@ export default function NavButtons() {
               </Avatar>
             </Link>
           </li>
+          <ThemeSwitch />
         </div>
       )}
       {!username && (
-        <li>
-          <Link href="/enter">
-            <Button>Signin</Button>
-          </Link>
-        </li>
+        <div className="flex gap-6 items-center">
+          <li>
+            <Link href="/enter">
+              <Button>Signin</Button>
+            </Link>
+          </li>
+          <ThemeSwitch />
+        </div>
       )}
     </ul>
   );

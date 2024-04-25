@@ -44,9 +44,9 @@ export default async function UserProfilePage({ params: { username } }: Props) {
   return (
     <>
       <UserDetails user={user} />
-      <div className="flex justify-center m-4">
-        <div className="w-11/12 md:w-7/8 lg:w-2/3">
-          <p>Most recent posts</p>
+      <div className="flex justify-center mt-4 mx-4">
+        <div className="w-11/12">
+          <p className="font-medium">Most recent posts</p>
         </div>
       </div>
       <PostFeed posts={posts} />
