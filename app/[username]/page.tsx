@@ -18,6 +18,8 @@ interface Props {
 
 interface UserDocument extends DocumentData, User {}
 
+export const revalidate = 3600;
+
 export default async function UserProfilePage({ params: { username } }: Props) {
   const userDoc = await getUserWithUsername(username);
 
@@ -37,7 +39,6 @@ export default async function UserProfilePage({ params: { username } }: Props) {
 
     const postsSnap = await getDocs(q);
     posts = postsSnap.docs.map(parseToJSON);
-    console.log("posts in page", posts);
   }
 
   return (

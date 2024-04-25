@@ -8,6 +8,8 @@ import { auth } from "@/lib/firebase";
 export default function NavButtons() {
   const { user, username } = useUserContext();
 
+  const userPhoto = user?.photoURL || "/avatar.svg";
+
   const signOut = () => {
     auth.signOut().then(() => console.log("Logout Success"));
   };
@@ -29,7 +31,7 @@ export default function NavButtons() {
           <li>
             <Link href={`/${username}`}>
               <Avatar>
-                <AvatarImage src={`${user?.photoURL}`} />
+                <AvatarImage src={`${userPhoto}`} />
                 <AvatarFallback>{user?.displayName?.charAt(0)}</AvatarFallback>
               </Avatar>
             </Link>
