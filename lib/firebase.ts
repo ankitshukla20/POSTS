@@ -2,6 +2,7 @@ import { getApps, initializeApp } from "firebase/app";
 import { GoogleAuthProvider, getAuth } from "firebase/auth";
 import {
   DocumentData,
+  Timestamp,
   collection,
   getDocs,
   getFirestore,
@@ -49,3 +50,5 @@ export function parseToJSON(doc: DocumentData) {
     updatedAt: data.updatedAt?.toMillis(),
   };
 }
+
+export const fromMillis = Timestamp.fromMillis;

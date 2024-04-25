@@ -38,7 +38,7 @@ export default async function UserProfilePage({ params: { username } }: Props) {
     );
 
     const postsSnap = await getDocs(q);
-    posts = postsSnap.docs.map(parseToJSON);
+    posts = postsSnap.docs.map((doc) => parseToJSON(doc));
   }
 
   return (

@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <UserProvider>
-      <html lang="en">
+      <html lang="en" className="">
         <body className={inter.className}>
           <Navbar />
           <main className="container mx-auto md:w-4/5">{children}</main>

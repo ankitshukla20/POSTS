@@ -9,9 +9,6 @@ interface Props {
 }
 
 export default function UserDetails({ user }: Props) {
-  console.log("hii from UserDetails");
-  console.log("user", user);
-  console.log(user?.photoUrl);
   const userPhoto = user?.photoUrl || "/avatar.svg";
 
   return (
