@@ -55,12 +55,13 @@ export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
 
   return (
     <>
+      <div className="mt-10" />
       <PostFeed posts={posts} />
 
       <div className="flex justify-center mt-2">
         <div className="w-11/12">
           {isFetching && (
-            <div className="w-full gap-x-2 flex items-center mx-5 my-2.5">
+            <div className="w-full gap-x-2 flex items-center mx-7 my-2">
               <div className="w-4 h-4 animate-pulse bg-pink-600 rounded-full "></div>
               <div className="w-4 h-4 animate-pulse  bg-purple-600 rounded-full "></div>
               <div className="w-4 h-4 animate-pulse bg-violet-600 rounded-full "></div>
@@ -72,7 +73,10 @@ export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
           )}
 
           {!isFetching && !postsEnd && (
-            <Button onClick={fetchPosts} variant="outline">
+            <Button
+              onClick={fetchPosts}
+              className="px-5 py-4 dark:bg-slate-800 dark:text-slate-50 rounded-lg font-bold transform hover:-translate-y-1 transition duration-400"
+            >
               Load more
             </Button>
           )}

@@ -34,7 +34,7 @@ export default function NavButtons() {
             </li>
             <li>
               <Link href="/admin">
-                <Button className="hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 bg-gradient-to-r from-blue-500 to-pink-500 text-white">
+                <Button className="hover:brightness-110 hover:animate-pulse font-bold py-3 px-6 bg-gradient-to-r from-violet-600 via-purple-600 to-pink-600 text-white">
                   Write Post
                 </Button>
               </Link>

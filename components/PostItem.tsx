@@ -14,15 +14,25 @@ export default function PostItem({ post, admin = false }: Props) {
   const wordCount = post?.content.trim().split(/\s+/g).length;
   const minutesToRead = (wordCount / 100 + 1).toFixed(0);
 
-  const createdAt = fromMillis(post.createdAt).toDate();
+  let createdAt = new Date();
+  if (typeof post.createdAt === "number") {
+    createdAt = fromMillis(post.createdAt).toDate();
+  }
 
   return (
     <div
-      className="w-11/12 py-5 px-8 rounded-2xl border shadow bg-slate-50 dark:bg-slate-900 hover:cursor-pointer hover:scale-105 hover:duration-150 duration-150"
+      className="w-11/12 py-5 px-8 rounded-2xl border-2 bg-white dark:bg-slate-800 hover:cursor-pointer hover:scale-105 hover:duration-150 duration-150"
       onClick={() => {
         router.push(`/${post.username}/${post.slug}`);
       }}
     >
+      {admin &&
+        (post.published ? (
+          <p className="text-green-500 mb-2 font-semibold">● Live</p>
+        ) : (
+          <p className="text-red-500 mb-2 font-semibold">Unpublished</p>
+        ))}
+
       <div>
         <h1 className="text-xl font-semibold mb-2">{post.title}</h1>
       </div>
@@ -46,6 +56,14 @@ export default function PostItem({ post, admin = false }: Props) {
         </p>
         <p className="pt-2 sm:p-0 font-light">❤️ {post.heartCount} Hearts</p>
       </div>
+
+      {admin && (
+        <>
+          <button className="mt-2 smky-btn3 relative hover:text-slate-50 py-2 px-6 after:absolute after:h-1 after:hover:h-[200%] transition-all duration-500 hover:transition-all hover:duration-500 after:transition-all after:duration-500 after:hover:transition-all after:hover:duration-500 overflow-hidden z-20 after:z-[-20] after:bg-green-500 after:rounded-t-full after:w-full after:bottom-0 after:left-0 text-gray-500">
+            Edit
+          </button>
+        </>
+      )}
     </div>
   );
 }

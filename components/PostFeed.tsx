@@ -12,6 +12,8 @@ export default function PostFeed({ posts, admin = false }: Props) {
   ));
 
   return (
-    <div className="flex flex-col items-center gap-5 my-4">{postItems}</div>
+    <>
+      <div className="flex flex-col items-center gap-5 my-4">{postItems}</div>
+    </>
   );
 }
