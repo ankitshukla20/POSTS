@@ -7,8 +7,8 @@ export interface Post {
   username: string;
   published: boolean;
   content: string;
-  createdAt: number;
-  updatedAt: number;
+  createdAt: number | Timestamp;
+  updatedAt: number | Timestamp;
   heartCount: number;
 }
 
