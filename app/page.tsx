@@ -23,9 +23,5 @@ export default async function Home() {
 
   const initialPosts = querySnap.docs.map((doc) => parseToJSON(doc));
 
-  return (
-    <>
-      <HomePagePostsFeed initialPosts={initialPosts} LIMIT={LIMIT} />
-    </>
-  );
+  return <HomePagePostsFeed initialPosts={initialPosts} LIMIT={LIMIT} />;
 }

@@ -44,7 +44,7 @@ export default async function UserProfilePage({ params: { username } }: Props) {
   return (
     <>
       <UserDetails user={user} />
-      <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-2 mb-10 mt-10 rounded-xl">
+      <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-2 mb-10 mt-10 rounded">
         <div className="flex justify-center">
           <h1 className="w-11/12 px-3 mt-2 mb-4 text-3xl font-medium">
             Most recent posts

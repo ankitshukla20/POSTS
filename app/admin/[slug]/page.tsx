@@ -11,7 +11,8 @@ interface Props {
 }
 
 export default function EditPostPage({ params: { slug } }: Props) {
-  const [preview, setPreview] = useState(false);
+  const [preview, setPreview] = useState(true);
+  const [edit, setEdit] = useState(true);
 
   const userRef = doc(firestore, "users", auth.currentUser?.uid || "");
   const postsRef = collection(userRef, "posts");
@@ -20,26 +21,32 @@ export default function EditPostPage({ params: { slug } }: Props) {
   const [post] = useDocumentData(postRef);
 
   return (
-    <div>
-      {post && (
-        <>
+    <>
+      <div className="my-10">
+        <Toolbox
+          edit={edit}
+          setEdit={setEdit}
+          preview={preview}
+          setPreview={setPreview}
+          post={post}
+        />
+      </div>
+
+      <div className="border-slate-50 bg-slate-50 dark:bg-slate-900 p-5 my-10 mx-auto rounded">
+        {post && (
           <section>
-            <h1>{post.title}</h1>
-            <p>ID: {post.slug}</p>
+            <h1 className="font-semibold text-2xl mb-1">{post.title}</h1>
+            <p className="mb-4 font-mono">ID: {post.slug}</p>
 
             <PostForm
               defaultValues={post}
               preview={preview}
+              edit={edit}
               postRef={postRef}
             />
           </section>
-
-          <aside>
-            <h3>Tools</h3>
-            <Toolbox preview={preview} setPreview={setPreview} post={post} />
-          </aside>
-        </>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }

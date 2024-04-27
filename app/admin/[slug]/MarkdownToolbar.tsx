@@ -209,7 +209,7 @@ export default function MarkdownToolbar({
 
   return (
     <div className="flex">
-      <div className="rounded-md flex gap-1 bg-slate-200 dark:bg-slate-800">
+      <div className="rounded-md flex flex-wrap gap-1 bg-slate-200 dark:bg-slate-800">
         <TooltipProvider>
           <Tooltip>
             <TooltipTrigger>
