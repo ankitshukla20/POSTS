@@ -13,6 +13,12 @@ import { MdOutlineHorizontalRule } from "react-icons/md";
 import { MdOutlineLink } from "react-icons/md";
 import { BsCardImage } from "react-icons/bs";
 import { MdKeyboardReturn } from "react-icons/md";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface Props {
   markdownText: string;
@@ -164,51 +170,99 @@ export default function MarkdownToolbar({
   };
 
   const Buttons = [
-    { onClick: handleHeading2, element: <LuHeading2 /> },
-    { onClick: handleHeading3, element: <LuHeading3 /> },
-    { onClick: handleBold, element: <BsTypeBold /> },
-    { onClick: handleItalic, element: <RiItalic /> },
-    { onClick: handleQuote, element: <GrBlockQuote /> },
-    { onClick: handleOrderedList, element: <RiListOrdered2 /> },
-    { onClick: handleUnorderedList, element: <RiListUnordered /> },
-    { onClick: handleCodeBlock, element: <RiCodeSSlashFill /> },
-    { onClick: handleHorizontalRule, element: <MdOutlineHorizontalRule /> },
-    { onClick: handleLink, element: <MdOutlineLink /> },
-    { onClick: handleImage, element: <BsCardImage /> },
+    {
+      onClick: handleHeading2,
+      element: <LuHeading2 />,
+      tooltip: <p>Heading 2</p>,
+    },
+    {
+      onClick: handleHeading3,
+      element: <LuHeading3 />,
+      tooltip: <p>Heading </p>,
+    },
+    { onClick: handleBold, element: <BsTypeBold />, tooltip: <p>Bold</p> },
+    { onClick: handleItalic, element: <RiItalic />, tooltip: <p>Italic</p> },
+    { onClick: handleQuote, element: <GrBlockQuote />, tooltip: <p>Quote</p> },
+    {
+      onClick: handleOrderedList,
+      element: <RiListOrdered2 />,
+      tooltip: <p>Ordered list</p>,
+    },
+    {
+      onClick: handleUnorderedList,
+      element: <RiListUnordered />,
+      tooltip: <p>List</p>,
+    },
+    {
+      onClick: handleCodeBlock,
+      element: <RiCodeSSlashFill />,
+      tooltip: <p>Code block</p>,
+    },
+    {
+      onClick: handleHorizontalRule,
+      element: <MdOutlineHorizontalRule />,
+      tooltip: <p>Horizontal rule</p>,
+    },
+    { onClick: handleImage, element: <BsCardImage />, tooltip: <p>Image</p> },
+    { onClick: handleLink, element: <MdOutlineLink />, tooltip: <p>Link</p> },
   ];
 
   return (
     <div className="flex">
       <div className="rounded-md flex gap-1 bg-slate-200 dark:bg-slate-800">
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleHeading1}
-          className="rounded-e-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
-        >
-          <LuHeading1 />
-        </Button>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleHeading1}
+                className="rounded-e-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+              >
+                <LuHeading1 />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Heading 1</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
 
         {Buttons.map((b, i) => (
-          <Button
-            key={i}
-            variant="ghost"
-            size="icon"
-            onClick={b.onClick}
-            className="rounded-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
-          >
-            {b.element}
-          </Button>
+          <TooltipProvider key={i}>
+            <Tooltip>
+              <TooltipTrigger>
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={b.onClick}
+                  className="rounded-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+                >
+                  {b.element}
+                </Button>
+              </TooltipTrigger>
+              <TooltipContent>{b.tooltip}</TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         ))}
 
-        <Button
-          variant="ghost"
-          size="icon"
-          onClick={handleNextLine}
-          className="rounded-s-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
-        >
-          <MdKeyboardReturn />
-        </Button>
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger>
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleNextLine}
+                className="rounded-s-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+              >
+                <MdKeyboardReturn />
+              </Button>
+            </TooltipTrigger>
+            <TooltipContent>
+              <p>Next line</p>
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
       </div>
     </div>
   );
