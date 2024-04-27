@@ -21,18 +21,16 @@ export default function EditPostPage({ params: { slug } }: Props) {
   const [post] = useDocumentData(postRef);
 
   return (
-    <>
-      <div className="my-10">
-        <Toolbox
-          edit={edit}
-          setEdit={setEdit}
-          preview={preview}
-          setPreview={setPreview}
-          post={post}
-        />
-      </div>
+    <div className="border bg-slate-200 dark:bg-slate-900 p-5 my-16 mx-auto rounded">
+      <Toolbox
+        edit={edit}
+        setEdit={setEdit}
+        preview={preview}
+        setPreview={setPreview}
+        post={post}
+      />
 
-      <div className="border bg-slate-200 dark:bg-slate-700 p-5 my-10 mx-auto rounded">
+      <div className="mt-10">
         {post && (
           <section>
             <h1 className="font-semibold text-2xl mb-1">{post.title}</h1>
@@ -47,6 +45,6 @@ export default function EditPostPage({ params: { slug } }: Props) {
           </section>
         )}
       </div>
-    </>
+    </div>
   );
 }
