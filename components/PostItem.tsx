@@ -31,27 +31,22 @@ export default function PostItem({ post, admin = false }: Props) {
           ))}
 
         <div className="py-2">
-          <span
+          <Link
+            href={`/${post.username}/${post.slug}`}
             className="text-xl font-semibold py-2 hover:underline hover:font-bold hover:cursor-pointer"
-            onClick={() => {
-              router.push(`/${post.username}/${post.slug}`);
-            }}
           >
             {post.title}
-          </span>
+          </Link>
         </div>
 
         <div className="flex flex-col gap-1 md:flex-row md:gap-5 md:items-center">
           <p className="text-sm">
             By{" "}
-            <em
-              className="text-pink-600 font-medium hover:cursor-pointer hover:text-rose-500 dark:hover:text-rose-500 hover:font-bold"
-              onClick={() => {
-                router.push(`/${post.username}`);
-              }}
-            >
-              @{post.username}
-            </em>
+            <Link href={`/${post.username}`}>
+              <em className="text-pink-600 font-medium hover:cursor-pointer hover:text-rose-500 dark:hover:text-rose-500 hover:font-bold">
+                @{post.username}
+              </em>
+            </Link>
           </p>
           <p className="text-slate-400 hidden md:block">|</p>
           <p className="text-sm text-slate-400">

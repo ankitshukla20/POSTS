@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import HomePagePostsFeed from "./HomePagePostsFeed";
 
-const LIMIT = 1;
+const LIMIT = 15;
 
 export default async function Home() {
   const q = query(

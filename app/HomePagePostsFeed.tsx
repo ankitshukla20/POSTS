@@ -22,7 +22,9 @@ interface Props {
 export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
   const [posts, setPosts] = useState(initialPosts);
   const [isFetching, setIsFetching] = useState(false);
-  const [postsEnd, setPostsEnd] = useState(false);
+  const [postsEnd, setPostsEnd] = useState(
+    initialPosts.length < LIMIT ? true : false
+  );
 
   const fetchPosts = async () => {
     setIsFetching(true);
@@ -58,7 +60,7 @@ export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
       <div className="mt-10" />
       <PostFeed posts={posts} />
 
-      <div className="flex justify-center mt-2">
+      <div className="flex justify-center mt-2 mb-16">
         <div className="w-11/12">
           {isFetching && (
             <div className="w-full gap-x-2 flex items-center mx-7 my-2">
