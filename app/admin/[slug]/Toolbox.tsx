@@ -18,11 +18,11 @@ export default function Toolbox({
 }: Props) {
   return (
     <>
-      <Button variant="outline" onClick={() => setPreview(!preview)}>
-        {preview ? "Hide Preview" : "Show Preview"}
-      </Button>
       <Button variant="outline" onClick={() => setEdit(!edit)}>
         {preview ? "Hide Editor" : "Show Editor"}
+      </Button>
+      <Button variant="outline" onClick={() => setPreview(!preview)}>
+        {preview ? "Hide Preview" : "Show Preview"}
       </Button>
       <Button
         variant="outline"

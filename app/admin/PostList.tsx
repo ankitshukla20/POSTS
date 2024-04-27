@@ -21,7 +21,7 @@ export default function PostList() {
   return (
     <>
       {posts.length > 0 && (
-        <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-2 mb-20 rounded">
+        <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-2 mb-20 rounded-lg">
           <div className="flex justify-center">
             <h1 className="w-11/12 px-3 mt-2 mb-4 text-3xl font-medium">
               Manage Your Posts

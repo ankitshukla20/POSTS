@@ -32,7 +32,7 @@ export default function EditPostPage({ params: { slug } }: Props) {
         />
       </div>
 
-      <div className="border-slate-50 bg-slate-50 dark:bg-slate-900 p-5 my-10 mx-auto rounded">
+      <div className="border bg-slate-200 dark:bg-slate-700 p-5 my-10 mx-auto rounded">
         {post && (
           <section>
             <h1 className="font-semibold text-2xl mb-1">{post.title}</h1>
