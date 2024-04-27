@@ -13,8 +13,10 @@ import {
   useState,
 } from "react";
 import UsernameMessage from "./UsernameMessage";
+import { useRouter } from "next/navigation";
 
 export default function UsernameForm() {
+  const router = useRouter();
   const [formVal, setFormVal] = useState("");
   const [isValid, setIsValid] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -24,7 +26,7 @@ export default function UsernameForm() {
     const val = e.target.value.toLowerCase();
     const re = /^(?=[a-zA-Z0-9._]{3,15}$)(?!.*[_.]{2})[^_.].*[^_.]$/;
 
-    if (val.length <= 3) {
+    if (val.length < 4) {
       setFormVal(val);
       setIsLoading(false);
       setIsValid(false);
@@ -86,37 +88,43 @@ export default function UsernameForm() {
     batch.set(usernameDocRef, { uid: user?.uid });
 
     await batch.commit();
+    router.push("/");
   };
 
   return (
-    <section>
-      <h1 className="font-semibold mb-4">Select Username</h1>
-      <form onSubmit={onSubmit} className="flex items-center gap-3 mb-2">
-        <Input
-          className="w-48"
-          type="text"
-          placeholder="Username"
-          value={formVal}
-          onChange={onChange}
+    <div className="flex justify-center mt-10">
+      <section className="min-w-60 border-2 px-5 py-8 rounded-md shadow bg-slate-50 dark:bg-slate-900">
+        <h1 className="font-semibold mb-4 text-xl">Select Username</h1>
+        <form
+          onSubmit={onSubmit}
+          className="flex flex-wrap items-center gap-3 mb-2 "
+        >
+          <Input
+            className="w-60"
+            type="text"
+            placeholder="Username"
+            value={formVal}
+            onChange={onChange}
+          />
+          <Button type="submit" disabled={!isValid}>
+            Select
+          </Button>
+        </form>
+        <UsernameMessage
+          username={formVal}
+          isValid={isValid}
+          isLoading={isLoading}
         />
-        <Button type="submit" disabled={!isValid}>
-          Select
-        </Button>
-      </form>
-      <UsernameMessage
-        username={formVal}
-        isValid={isValid}
-        isLoading={isLoading}
-      />
 
-      <h3 className="font-semibold mt-6 mb-1">Debug State</h3>
-      <div>
-        Username: {formVal}
-        <br />
-        Loading: {isLoading.toString()}
-        <br />
-        Username Valid: {isValid.toString()}
-      </div>
-    </section>
+        <h3 className="font-semibold mt-6 mb-1">Debug State</h3>
+        <div>
+          Username: {formVal}
+          <br />
+          Loading: {isLoading.toString()}
+          <br />
+          Username Valid: {isValid.toString()}
+        </div>
+      </section>
+    </div>
   );
 }
