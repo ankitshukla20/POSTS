@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import PostForm from "./PostForm";
 import Toolbox from "./Toolbox";
+import ImageUploader from "./ImageUploader";
 
 interface Props {
   params: { slug: string };
@@ -21,20 +22,24 @@ export default function EditPostPage({ params: { slug } }: Props) {
   const [post] = useDocumentData(postRef);
 
   return (
-    <div className="border bg-slate-200 dark:bg-slate-900 p-5 my-16 mx-auto rounded">
-      <Toolbox
-        edit={edit}
-        setEdit={setEdit}
-        preview={preview}
-        setPreview={setPreview}
-        post={post}
-      />
+    <>
+      <div className="border bg-slate-200 dark:bg-slate-900 p-5 mt-16 mx-auto rounded">
+        <Toolbox
+          edit={edit}
+          setEdit={setEdit}
+          preview={preview}
+          setPreview={setPreview}
+          post={post}
+        />
+      </div>
 
-      <div className="mt-10">
+      <div className="mt-10 border bg-slate-200 dark:bg-slate-900 p-5 my-16 mx-auto rounded">
         {post && (
           <section>
             <h1 className="font-semibold text-2xl mb-1">{post.title}</h1>
             <p className="mb-4 font-mono">ID: {post.slug}</p>
+
+            <ImageUploader />
 
             <PostForm
               defaultValues={post}
@@ -45,6 +50,6 @@ export default function EditPostPage({ params: { slug } }: Props) {
           </section>
         )}
       </div>
-    </div>
+    </>
   );
 }
