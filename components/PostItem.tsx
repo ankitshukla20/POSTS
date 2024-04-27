@@ -4,6 +4,7 @@ import { Post } from "@/lib/models";
 import { format } from "date-fns";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { IoHeartSharp } from "react-icons/io5";
 
 interface Props {
   post: Post;
@@ -61,7 +62,10 @@ export default function PostItem({ post, admin = false }: Props) {
           <p className="flex-grow text-slate-400 text-sm">
             {wordCount} words, {minutesToRead} min read
           </p>
-          <p className="pt-2 sm:p-0 font-light">❤️ {post.heartCount} Hearts</p>
+          <p className="pt-2 sm:p-0 font-light flex gap-1 items-center">
+            <IoHeartSharp className="text-red-500 text-lg" />
+            <span>{post.heartCount}</span> Hearts
+          </p>
         </div>
 
         {admin && (

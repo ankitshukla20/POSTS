@@ -28,15 +28,6 @@ export default async function PostPage({ params: { username, slug } }: Props) {
   return (
     <>
       <ContentPage postData={post} path={path} />
-      <AuthCheck
-        fallback={
-          <Link href="/enter">
-            <button>💗 Sign Up</button>
-          </Link>
-        }
-      >
-        <HeartButton path={path} />
-      </AuthCheck>
     </>
   );
 }
