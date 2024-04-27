@@ -33,9 +33,9 @@ export default function EditPostPage() {
         border
         border-gray-300
         resize
-        w-full
-"
+        w-full"
       />
+
       <div>
         <h3>Preview:</h3>
         {/* Render Markdown text as HTML using ReactMarkdown */}

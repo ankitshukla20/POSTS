@@ -1,4 +1,18 @@
+import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { LuHeading1 } from "react-icons/lu";
+import { LuHeading2 } from "react-icons/lu";
+import { LuHeading3 } from "react-icons/lu";
+import { BsTypeBold } from "react-icons/bs";
+import { RiItalic } from "react-icons/ri";
+import { GrBlockQuote } from "react-icons/gr";
+import { RiListOrdered2 } from "react-icons/ri";
+import { RiListUnordered } from "react-icons/ri";
+import { RiCodeSSlashFill } from "react-icons/ri";
+import { MdOutlineHorizontalRule } from "react-icons/md";
+import { MdOutlineLink } from "react-icons/md";
+import { BsCardImage } from "react-icons/bs";
+import { MdKeyboardReturn } from "react-icons/md";
 
 interface Props {
   markdownText: string;
@@ -149,21 +163,53 @@ export default function MarkdownToolbar({
     setSelection({ start, end });
   };
 
+  const Buttons = [
+    { onClick: handleHeading2, element: <LuHeading2 /> },
+    { onClick: handleHeading3, element: <LuHeading3 /> },
+    { onClick: handleBold, element: <BsTypeBold /> },
+    { onClick: handleItalic, element: <RiItalic /> },
+    { onClick: handleQuote, element: <GrBlockQuote /> },
+    { onClick: handleOrderedList, element: <RiListOrdered2 /> },
+    { onClick: handleUnorderedList, element: <RiListUnordered /> },
+    { onClick: handleCodeBlock, element: <RiCodeSSlashFill /> },
+    { onClick: handleHorizontalRule, element: <MdOutlineHorizontalRule /> },
+    { onClick: handleLink, element: <MdOutlineLink /> },
+    { onClick: handleImage, element: <BsCardImage /> },
+  ];
+
   return (
-    <div className="flex gap-4">
-      <button onClick={handleHeading1}>H1</button>
-      <button onClick={handleHeading2}>H2</button>
-      <button onClick={handleHeading3}>H3</button>
-      <button onClick={handleBold}>Bold</button>
-      <button onClick={handleItalic}>Italic</button>
-      <button onClick={handleQuote}>Quote</button>
-      <button onClick={handleOrderedList}>Ordered List</button>
-      <button onClick={handleUnorderedList}>Unordered List</button>
-      <button onClick={handleCodeBlock}>Code Block</button>
-      <button onClick={handleHorizontalRule}>Horizontal Rule</button>
-      <button onClick={handleLink}>Link</button>
-      <button onClick={handleImage}>Image</button>
-      <button onClick={handleNextLine}>Next Line</button>
+    <div className="flex">
+      <div className="rounded-md flex gap-1 bg-slate-200 dark:bg-slate-800">
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleHeading1}
+          className="rounded-e-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+        >
+          <LuHeading1 />
+        </Button>
+
+        {Buttons.map((b, i) => (
+          <Button
+            key={i}
+            variant="ghost"
+            size="icon"
+            onClick={b.onClick}
+            className="rounded-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+          >
+            {b.element}
+          </Button>
+        ))}
+
+        <Button
+          variant="ghost"
+          size="icon"
+          onClick={handleNextLine}
+          className="rounded-s-none hover:bg-slate-400 hover:text-slate-100 dark:hover:bg-slate-600"
+        >
+          <MdKeyboardReturn />
+        </Button>
+      </div>
     </div>
   );
 }
