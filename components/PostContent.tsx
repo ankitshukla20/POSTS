@@ -14,7 +14,9 @@ export default function PostContent({ post }: Props) {
       <p>
         Written by <Link href={`/${post.username}`}>@{post.username}</Link>
       </p>
-      <ReactMarkdown className="prose">{post.content}</ReactMarkdown>
+      <ReactMarkdown className="prose dark:prose-invert">
+        {post.content}
+      </ReactMarkdown>
     </div>
   );
 }

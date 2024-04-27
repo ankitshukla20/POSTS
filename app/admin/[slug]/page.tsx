@@ -1,48 +1,45 @@
 "use client";
-import React, { useRef, useState } from "react";
-import ReactMarkdown from "react-markdown";
-import MarkdownToolbar from "./MarkdownToolbar";
+import { auth, firestore } from "@/lib/firebase";
+import { collection, doc } from "firebase/firestore";
+import { useState } from "react";
+import { useDocumentData } from "react-firebase-hooks/firestore";
+import PostForm from "./PostForm";
+import Toolbox from "./Toolbox";
 
-export default function EditPostPage() {
-  const [markdownText, setMarkdownText] = useState("");
-  const textareaRef = useRef(null);
+interface Props {
+  params: { slug: string };
+}
+
+export default function EditPostPage({ params: { slug } }: Props) {
+  const [preview, setPreview] = useState(false);
+
+  const userRef = doc(firestore, "users", auth.currentUser?.uid || "");
+  const postsRef = collection(userRef, "posts");
+  const postRef = doc(postsRef, slug);
+
+  const [post] = useDocumentData(postRef);
 
   return (
     <div>
-      <MarkdownToolbar
-        markdownText={markdownText}
-        setMarkdownText={setMarkdownText}
-        textareaRef={textareaRef}
-      />
+      {post && (
+        <>
+          <section>
+            <h1>{post.title}</h1>
+            <p>ID: {post.slug}</p>
 
-      <textarea
-        ref={textareaRef}
-        value={markdownText}
-        onChange={(event) => {
-          setMarkdownText(event.target.value);
-        }}
-        placeholder="Enter Markdown text here..."
-        rows={10}
-        cols={100}
-        className="
-        p-2
-        font-mono
-        overflow-auto
-        whitespace-pre
-        border-solid
-        border
-        border-gray-300
-        resize
-        w-full"
-      />
+            <PostForm
+              defaultValues={post}
+              preview={preview}
+              postRef={postRef}
+            />
+          </section>
 
-      <div>
-        <h3>Preview:</h3>
-        {/* Render Markdown text as HTML using ReactMarkdown */}
-        <div className="prose dark:prose-invert">
-          <ReactMarkdown>{markdownText}</ReactMarkdown>
-        </div>
-      </div>
+          <aside>
+            <h3>Tools</h3>
+            <Toolbox preview={preview} setPreview={setPreview} post={post} />
+          </aside>
+        </>
+      )}
     </div>
   );
 }
