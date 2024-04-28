@@ -1,9 +1,6 @@
 import { getUserWithUsername, parseToJSON } from "@/lib/firebase";
 import { collection, doc, getDoc } from "firebase/firestore";
 import ContentPage from "./ContentPage";
-import HeartButton from "@/components/HeartButton";
-import AuthCheck from "@/components/AuthCheck";
-import Link from "next/link";
 
 interface Props {
   params: { username: string; slug: string };

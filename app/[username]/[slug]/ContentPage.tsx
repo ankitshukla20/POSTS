@@ -30,12 +30,12 @@ export default function ContentPage({ postData, path }: Props) {
   }, []);
 
   return (
-    <div className="mb-20 mt-10 sm:grid sm:grid-cols-4 sm:gap-6">
+    <div className="mb-20 mt-10 md:grid md:grid-cols-4 md:gap-6">
       <section className=" col-span-3 border bg-slate-50 dark:bg-slate-900 p-5 rounded-lg mb-10">
         <PostContent post={post} />
       </section>
 
-      <aside className="self-start sticky top-10 col-span-1">
+      <aside className="w-8/12 sm:w-1/3 md:w-full self-start sticky top-10 col-span-1">
         <div
           className={`flex flex-col gap-8 items-center border bg-slate-50 dark:bg-slate-900 p-5 pt-10 rounded-lg h-52 ${
             username === postData?.username ? "h-64" : "h-52"

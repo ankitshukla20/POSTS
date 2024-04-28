@@ -21,13 +21,13 @@ export default function PostList() {
   return (
     <>
       {posts.length > 0 && (
-        <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-2 mb-20 rounded-lg">
+        <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-0 md:pb-2 px-2 md:px-0 mb-20 rounded-lg">
           <div className="flex justify-center">
             <h1 className="w-11/12 px-3 mt-2 mb-4 text-3xl font-medium">
               Manage Your Posts
             </h1>
           </div>
-          <Separator className="w-11/12 mx-12" />
+          <Separator className="w-full md:w-11/12 md:mx-12" />
           <PostFeed posts={posts} admin />
         </div>
       )}

@@ -11,6 +11,7 @@ import {
 } from "firebase/firestore";
 import PostFeed from "../../components/PostFeed";
 import UserDetails from "./UserDetails";
+import { Separator } from "@/components/ui/separator";
 
 interface Props {
   params: { username: string };
@@ -44,12 +45,13 @@ export default async function UserProfilePage({ params: { username } }: Props) {
   return (
     <>
       <UserDetails user={user} />
-      <div className="border bg-slate-50 dark:bg-slate-900 pt-5 pb-2 mb-10 mt-10 rounded-lg">
+      <div className="border bg-slate-50 dark:bg-slate-900 pt-5 md:pb-2 px-2 md:px-0 mb-10 mt-10 rounded-lg">
         <div className="flex justify-center">
-          <h1 className="w-11/12 px-3 mt-2 mb-4 text-2xl font-medium">
+          <h1 className="w-full md:w-11/12 px-3 mt-2 mb-4 text-2xl font-medium">
             Most recent posts
           </h1>
         </div>
+        <Separator className="w-full md:w-11/12 md:mx-12" />
         <PostFeed posts={posts} />
       </div>
     </>
