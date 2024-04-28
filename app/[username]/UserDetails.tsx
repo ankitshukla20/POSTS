@@ -16,7 +16,7 @@ export default function UserDetails({ user }: Props) {
   return (
     <div>
       <CardContainer className="mt-10 mb-5">
-        <BackgroundGradient>
+        <div className="relative mx-auto max-w-md rounded-lg bg-gradient-to-tr from-pink-300 to-violet-300 p-0.5 shadow-lg">
           <CardBody className="flex items-center justify-around gap-10 py-6 px-8 bg-slate-50 shadow dark:bg-slate-900 rounded-lg">
             <CardItem>
               <Avatar className="h-28 w-28">
@@ -39,7 +39,7 @@ export default function UserDetails({ user }: Props) {
               </CardItem>
             </div>
           </CardBody>
-        </BackgroundGradient>
+        </div>
       </CardContainer>
     </div>
   );

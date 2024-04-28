@@ -1,11 +1,10 @@
 import Navbar from "@/components/Navbar";
+import { NextThemeProvider } from "@/components/ThemeProvider";
+import UserProvider from "@/lib/userContext";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
-import UserProvider from "@/lib/userContext";
-import { NextThemeProvider } from "@/components/ThemeProvider";
-import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,14 +21,11 @@ export default function RootLayout({
 }>) {
   return (
     <UserProvider>
-      <html lang="en" className="">
+      <html lang="en" className="min-h-screen">
         <body className={inter.className}>
           <NextThemeProvider>
             <Navbar />
-            <main className="container mx-auto md:w-4/5 min-h-[65vh]">
-              {children}
-            </main>
-            <Footer />
+            <main className="container mx-auto md:w-4/5">{children}</main>
             <Toaster />
           </NextThemeProvider>
         </body>

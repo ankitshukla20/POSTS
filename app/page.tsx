@@ -8,6 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import HomePagePostsFeed from "./HomePagePostsFeed";
+import Footer from "@/components/Banner";
 
 const LIMIT = 15;
 
@@ -25,5 +26,9 @@ export default async function Home() {
 
   const initialPosts = querySnap.docs.map((doc) => parseToJSON(doc));
 
-  return <HomePagePostsFeed initialPosts={initialPosts} LIMIT={LIMIT} />;
+  return (
+    <>
+      <HomePagePostsFeed initialPosts={initialPosts} LIMIT={LIMIT} />
+    </>
+  );
 }

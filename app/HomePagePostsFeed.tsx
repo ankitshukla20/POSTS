@@ -1,4 +1,5 @@
 "use client";
+import Banner from "@/components/Banner";
 import PostFeed from "@/components/PostFeed";
 import { Button } from "@/components/ui/button";
 import { firestore, fromMillis, parseToJSON } from "@/lib/firebase";
@@ -58,6 +59,12 @@ export default function HomePagePostsFeed({ initialPosts, LIMIT }: Props) {
   return (
     <>
       <div className="mt-10" />
+      <div className="flex justify-center">
+        <div className="w-11/12">
+          <Banner />
+        </div>
+      </div>
+
       <PostFeed posts={posts} />
 
       <div className="flex justify-center mt-2 mb-16">
