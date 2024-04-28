@@ -28,7 +28,7 @@ export default function ContentPage({ postData, path }: Props) {
   }, []);
 
   return (
-    <div className="mb-20 mt-10 grid grid-cols-4 gap-6">
+    <div className="mb-20 mt-10 grid sm:grid-cols-4 gap-6">
       <section className=" col-span-3 border bg-slate-50 dark:bg-slate-900 p-5 rounded-lg">
         <PostContent post={post} />
       </section>
