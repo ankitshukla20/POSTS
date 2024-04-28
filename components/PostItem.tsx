@@ -23,7 +23,7 @@ export default function PostItem({ post, admin = false }: Props) {
 
   return (
     <div className="w-full md:w-11/12 rounded-lg border-2 bg-white dark:bg-slate-800">
-      <div className="py-5 px-8 hover:scale-[0.98] hover:duration-150 duration-150">
+      <div className="pt-2 pb-3 px-4 md:pt-5 md:pb-5 md:px-8 hover:scale-[0.98] hover:duration-150 duration-150">
         {admin &&
           (post.published ? (
             <p className="text-green-500 mb-2 font-semibold">● Live</p>
