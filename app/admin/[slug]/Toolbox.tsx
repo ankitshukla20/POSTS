@@ -21,21 +21,21 @@ export default function Toolbox({
       <div className="flex">
         <div className="bg-slate-100 dark:bg-slate-800 rounded flex flex-col sm:flex-row gap-2">
           <Button
-            className="rounded-e-none hover:scale-110 duration-150 hover:duration-150"
+            className="rounded-e-none md:hover:scale-110 md:duration-150 md:hover:duration-150"
             variant="ghost"
             onClick={() => setEdit(!edit)}
           >
             {edit ? "Hide Editor" : "Show Editor"}
           </Button>
           <Button
-            className="rounded-none hover:scale-110 duration-150 hover:duration-150"
+            className="rounded-none md:hover:scale-110 md:duration-150 md:hover:duration-150"
             variant="ghost"
             onClick={() => setPreview(!preview)}
           >
             {preview ? "Hide Preview" : "Show Preview"}
           </Button>
           <Button
-            className="rounded-s-none hover:scale-110 duration-150 hover:duration-150"
+            className="rounded-s-none md:hover:scale-110 md:duration-150 md:hover:duration-150"
             variant="ghost"
             onClick={() => {
               setEdit(true);
@@ -49,7 +49,7 @@ export default function Toolbox({
 
       <Link href={`/${post?.username}/${post?.slug}`}>
         <Button
-          className="bg-slate-100 dark:bg-slate-800 rounded hover:scale-110 duration-150 hover:duration-150"
+          className="bg-slate-100 dark:bg-slate-800 rounded md:hover:scale-110 md:duration-150 md:hover:duration-150"
           variant="ghost"
         >
           Live view

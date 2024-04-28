@@ -70,8 +70,10 @@ export default function ImageUploader() {
 
       {downloadURL && (
         <>
-          <p className="mt-2">Copy & Paste this: </p>
-          <code className="font-light text-sm text-blue-800 dark:text-blue-300">{`![alt](${downloadURL})`}</code>
+          <p className="mt-2 animate-pulse">
+            Copy this whole & simply paste it in the editor:{" "}
+          </p>
+          <code className="break-words whitespace-normal font-light text-sm text-blue-800 dark:text-blue-300">{`![alt](${downloadURL})`}</code>
         </>
       )}
     </div>

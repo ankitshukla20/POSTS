@@ -53,7 +53,7 @@ export default function PostForm({
       )}
 
       <form onSubmit={updatePost}>
-        <div className="grid lg:grid-cols-2 gap-2">
+        <div className="lg:grid lg:grid-cols-2 gap-2">
           {edit && (
             <div className={preview ? "col-span-1" : "col-span-2"}>
               <textarea
@@ -91,7 +91,7 @@ export default function PostForm({
           />
           <label htmlFor="published">
             <span className="pl-3 hover:cursor-pointer select-none">
-              Published
+              {published ? "Published" : "Not Published (Click to publish)"}
             </span>
           </label>
         </fieldset>

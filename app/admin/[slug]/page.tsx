@@ -23,7 +23,7 @@ export default function EditPostPage({ params: { slug } }: Props) {
 
   return (
     <>
-      <div className="border bg-slate-200 dark:bg-slate-900 p-5 mt-16 mx-auto rounded">
+      <div className="border bg-slate-200 dark:bg-slate-900 p-2 md:p-5 mt-16 mx-auto rounded">
         <Toolbox
           edit={edit}
           setEdit={setEdit}
@@ -33,7 +33,7 @@ export default function EditPostPage({ params: { slug } }: Props) {
         />
       </div>
 
-      <div className="mt-10 border bg-slate-200 dark:bg-slate-900 p-5 my-16 mx-auto rounded">
+      <div className="mt-10 border bg-slate-200 dark:bg-slate-900 p-3 md:p-5 my-16 mx-auto rounded">
         {post && (
           <section>
             <h1 className="font-semibold text-2xl mb-1">{post.title}</h1>
