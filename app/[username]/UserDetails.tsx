@@ -17,7 +17,7 @@ export default function UserDetails({ user }: Props) {
     <div>
       <CardContainer className="mt-10 mb-5">
         <BackgroundGradient>
-          <CardBody className="flex items-center justify-around gap-10 py-6 px-8 bg-slate-100 shadow dark:bg-slate-900 rounded-lg">
+          <CardBody className="flex items-center justify-around gap-10 py-6 px-8 bg-slate-50 shadow dark:bg-slate-900 rounded-lg">
             <CardItem>
               <Avatar className="h-28 w-28">
                 <AvatarImage src={`${userPhoto}`} />
