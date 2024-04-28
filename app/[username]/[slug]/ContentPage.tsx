@@ -4,6 +4,7 @@ import HeartButton from "@/components/HeartButton";
 import PostContent from "@/components/PostContent";
 import { Button } from "@/components/ui/button";
 import { firestore } from "@/lib/firebase";
+import { useUserContext } from "@/lib/userContext";
 import { doc, onSnapshot } from "firebase/firestore";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -16,6 +17,7 @@ interface Props {
 
 export default function ContentPage({ postData, path }: Props) {
   const [post, setPost] = useState(postData);
+  const { username } = useUserContext();
 
   useEffect(() => {
     const postRef = doc(firestore, path);
@@ -34,7 +36,11 @@ export default function ContentPage({ postData, path }: Props) {
       </section>
 
       <aside className="self-start sticky top-10 col-span-1">
-        <div className="flex flex-col gap-8 items-center border bg-slate-50 dark:bg-slate-900 p-5 pt-10 rounded-lg h-52">
+        <div
+          className={`flex flex-col gap-8 items-center border bg-slate-50 dark:bg-slate-900 p-5 pt-10 rounded-lg h-52 ${
+            username === postData?.username ? "h-64" : "h-52"
+          }`}
+        >
           <p className="text-xl flex items-center gap-2">
             <strong>{post.heartCount || 0}</strong>
             <IoHeartSharp className="text-red-500" />
@@ -54,7 +60,7 @@ export default function ContentPage({ postData, path }: Props) {
               </Link>
             }
           >
-            <HeartButton path={path} />
+            <HeartButton postData={postData} path={path} />
           </AuthCheck>
         </div>
       </aside>
