@@ -63,18 +63,20 @@ export default function NavButtons() {
                 </Avatar>
               </DropdownMenuTrigger>
 
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem>
+              <DropdownMenuContent align="end" className="w-48 p-1">
+                <DropdownMenuItem className="text-lg p-2">
                   <Link href={`/${username}`}>Profile</Link>
                 </DropdownMenuItem>
 
-                <DropdownMenuItem>
+                <DropdownMenuItem className="text-lg p-2">
                   <Link href="/admin">Write Post</Link>
                 </DropdownMenuItem>
 
                 <Separator />
 
-                <DropdownMenuItem onClick={signOut}>Sign out</DropdownMenuItem>
+                <DropdownMenuItem onClick={signOut} className="text-lg p-2">
+                  Sign out
+                </DropdownMenuItem>
               </DropdownMenuContent>
             </DropdownMenu>
 
