@@ -5,6 +5,7 @@ import { Toaster } from "react-hot-toast";
 import "./globals.css";
 import UserProvider from "@/lib/userContext";
 import { NextThemeProvider } from "@/components/ThemeProvider";
+import Footer from "@/components/Footer";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -25,7 +26,10 @@ export default function RootLayout({
         <body className={inter.className}>
           <NextThemeProvider>
             <Navbar />
-            <main className="container mx-auto md:w-4/5">{children}</main>
+            <main className="container mx-auto md:w-4/5 min-h-[65vh]">
+              {children}
+            </main>
+            <Footer />
             <Toaster />
           </NextThemeProvider>
         </body>
